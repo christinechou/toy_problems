@@ -78,3 +78,119 @@ var balancedParens = function(parenString) {
 /// YOUR CODE HERE
 
 };
+
+
+///--------------------------------------------------------
+///--------------------------------------------------------
+/// BINARY TREE LEVELING
+///--------------------------------------------------------
+///-------------------------------------------------------
+/// Tags: Data structures, binary trees, linked lists, breadth-first
+///
+/// Description: Given a binary tree, design an algorithm which creates a
+/// linked list of all the nodes at each depth
+/// (e.g., if you have a tree with depth D, you'll have D linked lists)
+///
+//(0)                      Kayla
+//(1)            Hailey              Julia
+//(2)     Jacob        Chrissy      (no children)
+//(3) Mo   Larry    Andrew    Ben
+//
+// binTreeLevel([ {value: Kayla, next:null}, {value: Haily, next: 
+//              {value: Julia, next: null}}, {value: Jacob, next:
+//              {value: Chissy, next: null}}, {value: Mo, next:
+//              {value: Larry, next: {value: Andrew, next: {value: Ben, next:
+//              null}}}} ])
+///
+///--------------------------------------------------------
+/// IMPLEMENTATION OF A QUEUE, LINKEDLIST, AND TREE CLASSES
+///--------------------------------------------------------
+///
+const Queue = function() {
+  this.queue = [];
+  this.size = 0;
+}
+
+Queue.prototype.enqueue = function(value) {
+  this.size++;
+  return this.queue.push(value);
+};
+Queue.prototype.dequeue = function() {
+  this.size--
+  return this.queue.shift();
+};
+Queue.prototype.peek = function() {
+  let first = this.queue[0];
+  if (!first) {
+    return 'No value';
+  }
+  return first;
+};
+Queue.prototype.isEmpty = function() {
+  return this.queue.length === 0;
+};
+
+// ==========================================
+
+const LinkedList = function() {
+  this.head = null;
+  this.length = 0;
+}
+const Node = function(value) {
+  this.value = value;
+  this.next = null;
+}
+
+LinkedList.prototype.add = function(val) {
+  let pointer = this.head;
+  let node = new Node(val);
+
+  if (pointer === null) {
+    this.head = node;
+  } else {
+    while (pointer.next) {
+      pointer = pointer.next;
+    }
+    pointer.next = node;
+  }
+  this.length++
+}
+
+
+let Tree = function(root) {
+  this.root = root;
+  this.children = [];
+}
+
+
+Tree.prototype.addChild = function(child) {
+  if(!this.isDescendant(child)){
+    this.children.push(child);
+  } else {
+    throw new Error("That child is already a child of this tree");
+  }
+  return this;
+}
+Tree.prototype.isDescendant = function(child) {
+  if (this.children.indexOf(child) !== -1){
+    // `child` is an immediate child of this tree
+    return true;
+  } else{
+    for(var i = 0; i < this.children.length; i++){
+      if(this.children[i].isDescendant(child)){
+        // `child` is descendant of this tree
+        return true;
+      }
+    }
+    return false;
+  }
+}
+
+///--------------------------------------------------------
+/// START HERE: Use Tree, Queue, and LinkedList classes to solve binTreeLevel
+///--------------------------------------------------------
+
+var binTreeLevel = function(tree) {
+  /// YOUR CODE HERE
+
+};
