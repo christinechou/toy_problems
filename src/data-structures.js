@@ -192,29 +192,4 @@ Tree.prototype.isDescendant = function(child) {
 
 var binTreeLevel = function(tree) {
   /// YOUR CODE HERE
-  var q = new Queue();
-  var listOfNodesPerLevel = [];
-  tree.level = 0
-  q.enqueue(tree);
-
-  while (!q.isEmpty()) {
-    //continue traversing breadth first by selecting from queue
-    var node = q.dequeue();
-    if (listOfNodesPerLevel[node.level] === undefined) {
-      //if there is no value yet at the current node level, create new linked list
-      var list = new LinkedList();
-      list.add(node.root);
-      listOfNodesPerLevel.push(list)
-    } else {
-      //otherwise, add value to linkedlist
-      listOfNodesPerLevel[node.level].add(node.root);
-    }
-    var kids = node.children;
-      //add each child of node to queue
-      for (var i = 0; i < kids.length; i++) {
-        kids[i].level = node.level+1;
-        q.enqueue(kids[i]);
-      }
-  }
-  return listOfNodesPerLevel;
 };
