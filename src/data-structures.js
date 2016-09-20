@@ -91,12 +91,12 @@ var balancedParens = function(parenString) {
 /// linked list of all the nodes at each depth
 /// (e.g., if you have a tree with depth D, you'll have D linked lists)
 ///
-//(0)                      Kayla
-//(1)            Hailey              Julia
-//(2)     Jacob        Chrissy      (no children)
-//(3) Mo   Larry    Andrew    Ben
+//(0)                      Kayla a
+//(1)            Hailey b             Julia c
+//(2)     Jacob  d      Chrissy e     (no children)
+//(3) Mo f  Larry g   Andrew h   Ben  i
 //
-// binTreeLevel([ {value: Kayla, next:null}, {value: Haily, next: 
+// binTreeLevel([ {value: Kayla, next:null}, {value: Haily, next:
 //              {value: Julia, next: null}}, {value: Jacob, next:
 //              {value: Chissy, next: null}}, {value: Mo, next:
 //              {value: Larry, next: {value: Andrew, next: {value: Ben, next:
@@ -192,5 +192,4 @@ Tree.prototype.isDescendant = function(child) {
 
 var binTreeLevel = function(tree) {
   /// YOUR CODE HERE
-
 };
