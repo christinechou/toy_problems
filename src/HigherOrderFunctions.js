@@ -253,6 +253,21 @@ function euclid(point1, point2) {
 // expand(until20, 9);
 // => [9, 14, 19]
 
-function expand(callback, initVal) {
+// let untilZero = function(string) {
+//   let len = string.length;
+//   let sliver = string[0];
+//   return (len > 0) ? [string.slice(1), sliver] : null;
+// };
+
+function expand(cb, initVal) {
   /// TO DO: YOUR CODE HERE
+  let results = [];
+  let curResult = cb(initVal)
+  while(curResult !== null) {
+    results.push(curResult[1]);
+    initVal = curResult[0];
+    curResult = cb(initVal)
+  }
+  return results;
 }
+// console.log(expand(untilZero, 'applezzz'))
