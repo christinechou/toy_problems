@@ -189,7 +189,51 @@ Tree.prototype.isDescendant = function(child) {
 ///--------------------------------------------------------
 /// START HERE: Use Tree, Queue, and LinkedList classes to solve binTreeLevel
 ///--------------------------------------------------------
+let a = new Tree('Anthony');
+let b = new Tree('Becky');
+let c = new Tree('Christine');
+let d = new Tree('David');
+let e = new Tree('Eliza');
+let f = new Tree('Fitzgerald');
+let g = new Tree('Guy');
+let h = new Tree('Hagrid');
+a.addChild(b);
+a.addChild(c);
+b.addChild(d);
+b.addChild(e);
+d.addChild(f);
+e.addChild(g);
+
+
 
 var binTreeLevel = function(tree) {
   /// YOUR CODE HERE
+  var q = new Queue();
+
+  var listOfNodesPerLevel = [];
+  tree.level = 0
+  q.enqueue(tree);
+
+  while (!q.isEmpty()) {
+
+    var node = q.dequeue();
+    if (listOfNodesPerLevel[node.level] === undefined) {
+      console.log('no list exists here yet');
+      var list = new LinkedList();
+      list.add(node.root);
+      listOfNodesPerLevel.push(list)
+      console.log('new list:',list, 'at level',node.level);
+    } else {
+      listOfNodesPerLevel[node.level].add(node.root);
+    }
+    var kids = node.children
+    if (kids !== 0) {
+      for (var i = 0; i < kids.length; i++) {
+        kids[i].level = node.level+1;
+        q.enqueue(kids[i]);
+      }
+    }
+  }
+  return listOfNodesPerLevel;
 };
+console.log('result of passing e',binTreeLevel(a))
