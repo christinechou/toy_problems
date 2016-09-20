@@ -84,7 +84,7 @@ function femaleUnder37(people, n) {
 // printOdds(x) => [33, 3]
 
 function printOdds(x) {
-/// YOUR CODE HERE
+/// TO DO: YOUR CODE HERE
 }
 
 ///--------------------------------------------------------
@@ -105,7 +105,7 @@ var boxarts = [
 ];
 
 function largest(arr) {
-/// YOUR CODE HERE
+/// TO DO: YOUR CODE HERE
 }
 
 ///--------------------------------------------------------
@@ -144,7 +144,7 @@ var obj2 = [
 
 
 function objectSome(collection, source) {
- /// YOUR CODE HERE
+ /// TO DO: YOUR CODE HERE
 }
 
 
@@ -168,7 +168,7 @@ function objectSome(collection, source) {
 
 
 function largestNums(arr) {
-/// YOUR CODE HERE
+/// TO DO: YOUR CODE HERE
 }
 
 ///--------------------------------------------------------
@@ -201,7 +201,7 @@ function destroyer(arr) {
 
 ///--------------------------------------------------------
 ///--------------------------------------------------------
-/// EUCLIDEAN VALUE (Difficulty: 2/5)
+/// EUCLIDEAN VALUE (Difficulty: 3/5)
 ///--------------------------------------------------------
 ///--------------------------------------------------------
 
@@ -210,15 +210,15 @@ function destroyer(arr) {
 /// Write a function merge that takes two arrays of equal length and returns a single array that merges the values as a result of a callback.
 
 function merge(arr1, arr2, callback) {
-  /// YOUR CODE HERE
+  /// TO DO:YOUR CODE HERE
 }
 
 /// Write the callback function add
 function add(a, b) {
-  /// YOUR CODE HERE
+  /// TO DO:YOUR CODE HERE
 }
 
-/// x = merge([1, 5, 3, 12], [4, 7, 13, 3], add) 
+/// x = merge([1, 5, 3, 12], [4, 7, 13, 3], add)
 /// x === [5, 12, 16, 15]
 
 
@@ -226,16 +226,33 @@ function add(a, b) {
 /// Equation for calculating hypotenuse:  sqrt ( legLength1^2 + legLength2^2 )
 
 function euclid(point1, point2) {
-  /// YOUR CODE HERE
+  /// TO DO:YOUR CODE HERE
 }
 
 /// y = euclid([3, 5], [7, 2]);
 /// y === 5
 
 
+///--------------------------------------------------------
+///--------------------------------------------------------
+/// EXPAND (Difficulty: 3/5)
+///--------------------------------------------------------
+///--------------------------------------------------------
 
+/// Tags: Higher-order functions, callbacks, arrays
 
+/// Write a function expand that takes a function (callback) and value as parameters and returns an array containing the results of the callback. The callback function will always return a tuple OR null.  The first value in the tuple will be used as the value on the subsequent call, and the second value in the tuple will be added to the end of the array.  The function will continue running until the callback evaluates to null.
 
+// let until20 = function(num) {
+//   if (num > 20) {
+//    return null;
+//   } else {
+//     return [num + 5, num]
+//   }
+// }
+// expand(until20, 9);
+// => [9, 14, 19]
 
-
-
+function expand(callback, initVal) {
+  /// TO DO: YOUR CODE HERE
+}
