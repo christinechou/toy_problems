@@ -69,15 +69,12 @@ describe("FUN WITH HIGHER ORDER FUNCTIONS!", function() {
         { width: 425, height:150, url:"http://cdn-0.nflximg.com/images/2891/Fracture425.jpg" },
         { width: 150, height:425, url:"http://cdn-0.nflximg.com/images/2891/Fracture420.jpg" }
     ];
-
     it("should return an array", function() {
       expect(largest(boxarts)).toEqual(true);
     });
-
     it("should return url of largest box art", function() {
       expect(largest(boxarts)).toEqual(["http://cdn-0.nflximg.com/images/2891/Fracture425.jpg"]);
     });
-
     it("should return all url's of largest boxarts", function() {
       expect(largest(boxarts)).toEqual(["http://cdn-0.nflximg.com/images/2891/Fracture425.jpg", "http://cdn-0.nflximg.com/images/2891/Fracture420.jpg"]);
     });
@@ -89,17 +86,14 @@ describe("FUN WITH HIGHER ORDER FUNCTIONS!", function() {
       { "a": 1 },
       { "a": 1, "b": 2, "c": 2 }
     ];
-
     var obj2 = [
       { first: "Romeo", last: "Montague" },
       { first: "Mercutio", last: null },
       { first: "Tybalt", last: "Capulet" }
     ];
-
     it("should return an array", function() {
       expect(Array.isArray(objectSome(obj1, { "a": 1, "c": 2 }))).toEqual(true);
     });
-
     it("should return array of all objects with matching key value pairs", function() {
       expect(objectSome(obj1, { "a": 1, "c": 2 })).toEqual([{ "a": 1, "b": 2, "c": 2 }]);
       expect(objectSome(obj2, { last: "Capulet" })).toEqual([{ first: "Tybalt", last: "Capulet" }]);
@@ -113,7 +107,6 @@ describe("FUN WITH HIGHER ORDER FUNCTIONS!", function() {
       expect(largestNums([[-2, -5, -1], [-2, -3, -1], [-6, -5]])).toEqual([-1, -1, -5]);
       expect(largestNums([[5], [6], [7], [8]])).toEqual([5, 6, 7, 8]);
     });
-
     it("should return null for empty arrays", function() {
       expect(largestNums([[], [2, 3, 1], [0]])).toEqual([ null, 3, 0 ]);
       expect(largestNums([])).toEqual(null);
@@ -126,13 +119,59 @@ describe("FUN WITH HIGHER ORDER FUNCTIONS!", function() {
       expect(destroyer([1, 2, 3, 1, 2, 3], 3, 2)).toEqual([1, 1]);
       expect(destroyer([1, 2, 3])).toEqual([1, 2, 3]);
     });
-
     it("should return original array if does not contain 'destroyer' numbers", function() {
       expect(destroyer(destroyer([1, 2, 3], 5, 6, 10))).toEqual([1, 2, 3]);
     });
-
     it("should return empty array if all elements are destroyed", function() {
       expect(destroyer(destroyer([1, 2, 3], 1, 2, 3))).toEqual([]);
+    });
+  });
+
+  describe("EUCLID", function() {
+    it("should return a number", function() {
+      expect(typeof euclid([0,0],[3,5])).toEqual('number');
+      expect(typeof euclid([-1,-5],[2,10])).toEqual('number');
+    });
+    it("should return the euclidean length between two points", function() {
+      let x = [0,5];
+      let y = [3,9];
+      expect(euclid(x,y)).toEqual(5);
+    });
+  });
+
+  describe("EXPAND", function() {
+    let untilZero = function(string) {
+      let len = string.length;
+      let sliver = string[0];
+      return (len > 0) ? [string.slice(1), sliver] : null;
+    };
+    it("should return an array", function() {
+      expect(Array.isArray(expand(untilZero, 'apples'))).toEqual(true);
+    });
+    it("stop calling callback once the result is null", function() {
+      let numberRuns = 0;
+      let random = function(val) {
+        if (val >= 90) {
+          return null;
+        } else {
+          numberRuns++;
+          return [ Math.random()*100, 'Did not ace']
+        }
+      }
+      var result = expand(random, 0);
+      expect(result.length).toEqual(numberRuns);
+    });
+    it("should use first value of tuple as the argument to the subsequent callback and return an array containing results of callback", function() {
+      // [use this as callback input to next call, use this to add to array]
+      let increase = function(val) {
+        if (val >=10) {
+          return null;
+        } else {
+          return [ val + 5 , val ]
+        }
+      }
+      expect(expand(increase, 1)[0]).toEqual(1);
+      expect(expand(increase, 1)[1]).toEqual(6);
     });
   });
 
